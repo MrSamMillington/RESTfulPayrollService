@@ -10,8 +10,7 @@
 
 `curl -X DELETE localhost:8080/employees/3`
 
-This by itself is not restful. 
-
+## This by itself is not restful. 
 
 ```
 I am getting frustrated by the number of people calling 
@@ -60,10 +59,21 @@ Rules of REST:
 
 ## Use HATEOUS to decouple state-based actions from the payload of the data.
 
-Pass valid links, rather than the data itself. I'e instead of handing IN_PROGRESS, handle
-enum the options available to anything IN_PROGRESS - like Cancel or Complete.
+Pass valid links, rather than the data itself. Example - instead of handing an enum called IN_PROGRESS, and 
+building client logic based on this, hand the available actions via links instead.
+ like Cancel or Complete.
 
 This naturally reduces coupling between client and server..
+
+This also reduces client code + logic needed.
+
+## Summary
+
+1. Don't remove old fields. Instead, support them.
+2. Use rel-based links so clients don't have to hard code URIs
+3. Retain old links as long as possible
+4. Use links, not payload data, to instruct clients when various state-driving 
+operations are available.
 
  
 
